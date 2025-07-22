@@ -1,45 +1,50 @@
 # 🤖 Chatbot para Consulta do Instrumento de Padronização AGU
 
-Projeto desenvolvido como prática de construção de um sistema de RAG (Retrieval-Augmented Generation) usando Python, LangChain, Hugging Face e ChromaDB.
+Este projeto demonstra uma abordagem simples de RAG (Retrieval-Augmented Generation) aplicada ao documento **"Instrumento de Padronização dos Procedimentos de Contratação - AGU (Fev 2024)"**. A solução utiliza LangChain, embeddings locais e ChromaDB para responder perguntas com base no conteúdo do PDF.
 
 ---
 
 ## 📚 Visão Geral
 
-Este chatbot foi projetado para responder perguntas baseadas no conteúdo do documento:
-
-> **"Instrumento de Padronização dos Procedimentos de Contratação - AGU (Fev 2024)"**
-
-Utiliza técnicas de:
-- Extração de texto de PDFs
-- Criação de embeddings locais com Hugging Face
-- Busca vetorial inteligente usando ChromaDB
-- Implementação de fluxo de perguntas e respostas simulando um assistente jurídico
+1. O PDF é carregado e dividido em páginas.
+2. Cada página é convertida em embeddings com Hugging Face.
+3. Os vetores são armazenados em uma base ChromaDB local.
+4. Um modelo da OpenAI é utilizado para gerar as respostas.
 
 ---
 
 ## 🚀 Tecnologias Utilizadas
 
-![Python](https://img.shields.io/badge/Python-3.11-blue)
-![LangChain](https://img.shields.io/badge/LangChain-Framework-green)
-![ChromaDB](https://img.shields.io/badge/ChromaDB-Vector%20Database-orange)
-![HuggingFace](https://img.shields.io/badge/HuggingFace-Transformers-yellow)
-
 - Python 3.11
-- LangChain
-- LangChain-Community
-- LangChain-Huggingface
-- ChromaDB
-- Sentence-Transformers
-- Gradio (futuras melhorias)
-- Jupyter Notebook
+- [LangChain](https://github.com/langchain-ai/langchain)
+- [ChromaDB](https://github.com/chroma-core/chroma)
+- [Hugging Face Transformers](https://github.com/huggingface/transformers)
 
 ---
 
-## 🛠️ Como Rodar Localmente
+## 🛠️ Como Rodar
 
-1. Clone o repositório:
+1. Instale as dependências em um ambiente virtual:
+   ```bash
+   python -m pip install -r requirements.txt
+   ```
+2. Defina a variável `OPENAI_API_KEY` com sua chave da OpenAI.
+3. Execute o script de exemplo:
+   ```bash
+   python chatbot_pdf.py --pdf inputs/Instrumento_AGU.pdf
+   ```
+4. Envie suas perguntas no prompt e digite `sair` para finalizar.
 
-```bash
-git clone https://github.com/seuusuario/chatbot-top-contratacoes-agu.git
-cd chatbot-top-contratacoes-agu
+---
+
+## 📄 Estrutura
+
+```
+chatbot-top-contratacoes-agu/
+├── chatbot_pdf.py       # Script de linha de comando
+├── chatbot_pdf.ipynb    # Notebook original
+├── inputs/
+│   └── Instrumento_AGU.pdf
+├── requirements.txt
+└── README.md
+```
